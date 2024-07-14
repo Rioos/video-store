@@ -10,18 +10,16 @@ This project is a video store web application built with React, Apollo Client, A
 - Real-time updates using GraphQL subscriptions
 
 
-## Getting Started
-
-### Clone the Repository
+## Clone the Repository
 
 ```bash
 git clone https://github.com/your-username/video-store-app.git
 cd video-store-app
 ```
 
-### Run the application
+## Run the application
 
-### - Docker Version
+### Docker Version
 
 #### Prerequisites
 
@@ -36,7 +34,7 @@ The backend and frontend containers will be running on hot reload mode, so if yo
 docker-compose up --build
 ```
 
-### - Manual instalation
+### Manual instalation
 
 #### Prerequesites
 - NodeJS 
@@ -62,3 +60,70 @@ yarn install
 yarn start
 ```
 
+## Access the Application
+
+	•	Frontend: http://localhost:3000
+	•	Backend GraphQL Playground: http://localhost:4000/graphql
+
+From the Playground you may want to use some usefull queries/mutations:
+
+
+```graphql
+
+# Gets all movies
+query GetMovies {
+  movies {
+    id
+    title
+    likes
+  }
+}
+
+# Like a movie (will increment likes in one)
+mutation LikeMovie($likeMovieId: Int!) {
+  likeMovie(id: $likeMovieId) {
+    id
+    title
+    likes
+  }
+}
+
+# Variables example
+# {
+#  "id": 1
+# }
+
+# Add a movie
+mutation AddMovie($title: String!) {
+  addMovie(title: $title) {
+    id
+    title
+    likes
+    createdAt
+    updatedAt
+  }
+}
+
+# Variables example
+# {
+#  "title": "New Movie"
+# }
+
+# Listens to the MovieAdded channel so that you will get updates when a new Movie is added
+subscription MovieAdded {
+  movieAdded {
+    id
+    likes
+    title
+  }
+}
+
+# Listens to the MovieLiked channel  so that you will get updates when a Movie is liked
+subscription MovieLiked {
+    movieLiked {
+    id
+    likes
+    title
+  }
+}
+```
