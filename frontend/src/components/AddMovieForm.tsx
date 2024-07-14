@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
-import { Box, Button, Input, Stack } from "@chakra-ui/react";
+import { Box, Button, Input, VStack, Heading } from "@chakra-ui/react";
 
 export const ADD_MOVIE = gql`
   mutation AddMovie($title: String!) {
@@ -28,21 +28,29 @@ const AddMovieForm: React.FC = () => {
     <Box
       as="form"
       onSubmit={handleSubmit}
-      p={4}
+      p={6}
+      width={"100%"}
       borderWidth="1px"
       borderRadius="lg"
       textAlign="center"
+      bg="white"
+      boxShadow="md"
+      _hover={{ boxShadow: "lg" }}
+      transition="all 0.3s ease"
     >
-      <Stack spacing={4}>
+      <VStack spacing={4}>
+        <Heading as="h3" size="lg">
+          Add New Movie
+        </Heading>
         <Input
-          placeholder="Movie Titles"
+          placeholder="Movie Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <Button type="submit" colorScheme="teal">
+        <Button type="submit" colorScheme="blue" width="full">
           Add Movie
         </Button>
-      </Stack>
+      </VStack>
     </Box>
   );
 };

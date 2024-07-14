@@ -8,12 +8,12 @@ const resolvers = {
     movies: async () => await Movie.findAll({ order: [["createdAt", "DESC"]] }),
   },
   Mutation: {
-    addMovie: async (_: unknown, { title }: { title: string }) => {
+    addMovie: async (_: undefined, { title }: { title: string }) => {
       const movie = await Movie.create({ title });
       pubsub.publish("MOVIE_ADDED", { movieAdded: movie });
       return movie;
     },
-    likeMovie: async (_: unknown, { id }: { id: number }) => {
+    likeMovie: async (_: undefined, { id }: { id: number }) => {
       return sequelize.transaction(async (transaction) => {
         const movie = await Movie.findByPk(id, {
           lock: transaction.LOCK.UPDATE,

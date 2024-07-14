@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useQuery, gql, useSubscription } from "@apollo/client";
-import { SimpleGrid, Box } from "@chakra-ui/react";
+import { SimpleGrid, Box, Container, Heading, VStack } from "@chakra-ui/react";
 import MovieCard from "../components/MovieCard";
 import AddMovieForm from "../components/AddMovieForm";
 
@@ -55,24 +55,27 @@ const HomePage: React.FC = () => {
   if (error) return <p>Error :(</p>;
 
   return (
-    <Box>
-      <SimpleGrid columns={[1, null, 3]} spacing="40px">
-        {data.movies.map(
-          (movie: {
-            id: string;
-            title: string;
-            likes: number;
-            createdAt: string;
-            updatedAt: string;
-          }) => (
-            <MovieCard key={movie.id} movie={movie} />
-          )
-        )}
-      </SimpleGrid>
-      <Box mt={8}>
+    <Container maxW="container.lg" mt={8}>
+      <VStack spacing={8}>
+        <Heading as="h1" size="xl" mb={4}>
+          Movies
+        </Heading>
+        <SimpleGrid columns={[1, null, 3]} spacing="40px" width={"100%"}>
+          {data.movies.map(
+            (movie: {
+              id: string;
+              title: string;
+              likes: number;
+              createdAt: string;
+              updatedAt: string;
+            }) => (
+              <MovieCard key={movie.id} movie={movie} />
+            )
+          )}
+        </SimpleGrid>
         <AddMovieForm />
-      </Box>
-    </Box>
+      </VStack>
+    </Container>
   );
 };
 

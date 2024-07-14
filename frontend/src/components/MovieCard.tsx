@@ -1,6 +1,7 @@
 import React from "react";
 import { useMutation, gql } from "@apollo/client";
-import { Box, Button, Text } from "@chakra-ui/react";
+import { Box, Button, Text, VStack, HStack, Icon } from "@chakra-ui/react";
+import { FaThumbsUp } from "react-icons/fa";
 
 export const LIKE_MOVIE = gql`
   mutation LikeMovie($id: Int!) {
@@ -15,8 +16,6 @@ interface Movie {
   id: string;
   title: string;
   likes: number;
-  createdAt: string;
-  updatedAt: string;
 }
 
 interface MovieCardProps {
@@ -32,17 +31,25 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
       borderRadius="lg"
       overflow="hidden"
       p={4}
-      textAlign="center"
+      bg="white"
+      boxShadow="md"
+      _hover={{ boxShadow: "lg" }}
+      transition="all 0.3s ease"
     >
-      <Text fontSize="xl" mb={4}>
-        {movie.title}
-      </Text>
-      <Button
-        colorScheme="teal"
-        onClick={() => likeMovie({ variables: { id: movie.id } })}
-      >
-        Likes: {movie.likes}
-      </Button>
+      <VStack spacing={4}>
+        <Text fontSize="2xl" fontWeight="bold">
+          {movie.title}
+        </Text>
+        <HStack>
+          <Button
+            colorScheme="blue"
+            onClick={() => likeMovie({ variables: { id: movie.id } })}
+            leftIcon={<Icon as={FaThumbsUp} />}
+          >
+            Likes: {movie.likes}
+          </Button>
+        </HStack>
+      </VStack>
     </Box>
   );
 };

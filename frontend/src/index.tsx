@@ -1,16 +1,31 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { ApolloProvider } from "@apollo/client";
 import client from "./apolloClient";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 const container = document.getElementById("root");
-const root = createRoot(container!); // Create a root.
+const root = createRoot(container!);
+
+const theme = extendTheme({
+  styles: {
+    global: {
+      "html, body": {
+        backgroundColor: "#f7fafc",
+        color: "#2d3748",
+        lineHeight: "tall",
+      },
+      a: {
+        color: "teal.500",
+      },
+    },
+  },
+});
 
 root.render(
-  <ChakraProvider>
+  <ChakraProvider theme={theme}>
     <ApolloProvider client={client}>
       <App />
     </ApolloProvider>
