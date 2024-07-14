@@ -26,9 +26,13 @@ cd video-store-app
 - Docker
 - Docker Compose
 
+#### Run the containers
+
 The following command will start 3 containers, one for the React front-end, one for the Node back-end and the other for our Postgress database.
 
 The backend and frontend containers will be running on hot reload mode, so if you make any change it should restart automatically with the updated files.
+
+**You may want to update your .env files (inside backend and frontend folders) if you wish.**
 
 ```bash
 docker-compose up --build
