@@ -17,8 +17,8 @@ interface MovieAttributes {
   id: number;
   title: string;
   likes: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 interface MovieCreationAttributes
@@ -31,8 +31,8 @@ class Movie
   public id!: number;
   public title!: string;
   public likes!: number;
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
+  public createdAt!: Date;
+  public updatedAt!: Date;
 }
 
 Movie.init(

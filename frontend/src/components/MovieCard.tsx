@@ -2,8 +2,8 @@ import React from "react";
 import { useMutation, gql } from "@apollo/client";
 import { Box, Button, Text } from "@chakra-ui/react";
 
-const LIKE_MOVIE = gql`
-  mutation LikeMovie($id: ID!) {
+export const LIKE_MOVIE = gql`
+  mutation LikeMovie($id: Int!) {
     likeMovie(id: $id) {
       id
       likes

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
 import { Box, Button, Input, Stack } from "@chakra-ui/react";
 
-const ADD_MOVIE = gql`
+export const ADD_MOVIE = gql`
   mutation AddMovie($title: String!) {
     addMovie(title: $title) {
       id

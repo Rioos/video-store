@@ -13,7 +13,7 @@ const resolvers = {
       pubsub.publish("MOVIE_ADDED", { movieAdded: movie });
       return movie;
     },
-    likeMovie: async (_: unknown, { id }: { id: string }) => {
+    likeMovie: async (_: unknown, { id }: { id: number }) => {
       return sequelize.transaction(async (transaction) => {
         const movie = await Movie.findByPk(id, {
           lock: transaction.LOCK.UPDATE,

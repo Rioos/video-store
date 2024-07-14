@@ -2,7 +2,7 @@ import { gql } from "graphql-tag";
 
 const typeDefs = gql`
   type Movie {
-    id: ID!
+    id: Int!
     title: String!
     likes: Int!
     createdAt: String!
@@ -15,7 +15,7 @@ const typeDefs = gql`
 
   type Mutation {
     addMovie(title: String!): Movie
-    likeMovie(id: ID!): Movie
+    likeMovie(id: Int!): Movie
   }
 
   type Subscription {
