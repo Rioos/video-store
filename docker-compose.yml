@@ -28,6 +28,11 @@ services:
 
   frontend:
     build: ./frontend
+    volumes:
+      - ./frontend/src:/usr/src/app/src
+      - ./frontend/public:/usr/src/app/public
+      - ./frontend/package.json:/usr/src/app/package.json
+      - /usr/src/app/node_modules
     ports:
       - "3000:3000"
     depends_on:

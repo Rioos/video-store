@@ -35,7 +35,7 @@ const AddMovieForm: React.FC = () => {
     >
       <Stack spacing={4}>
         <Input
-          placeholder="Movie Title"
+          placeholder="Movie Titles"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
