@@ -99,8 +99,6 @@ mutation AddMovie($title: String!) {
     id
     title
     likes
-    createdAt
-    updatedAt
   }
 }
 
