@@ -9,10 +9,6 @@ This project is a video store web application built with React, Apollo Client, A
 - Like movies
 - Real-time updates using GraphQL subscriptions
 
-## Prerequisites
-
-- Docker
-- Docker Compose
 
 ## Getting Started
 
@@ -25,6 +21,13 @@ cd video-store-app
 
 ### Run the application
 
+### - Docker Version
+
+#### Prerequisites
+
+- Docker
+- Docker Compose
+
 The following command will start 3 containers, one for the React front-end, one for the Node back-end and the other for our Postgress database.
 
 The backend and frontend containers will be running on hot reload mode, so if you make any change it should restart automatically with the updated files.
@@ -32,3 +35,30 @@ The backend and frontend containers will be running on hot reload mode, so if yo
 ```bash
 docker-compose up --build
 ```
+
+### - Manual instalation
+
+#### Prerequesites
+- NodeJS 
+- PostgresDB instance running
+
+#### Run Backend
+
+Edit the `.env` file inside the `backend` to mach your Database configuration then run:
+
+```bash
+cd backend
+yarn install
+yarn run dev
+```
+
+#### Run Frontend
+
+Edit the `.env` file inside the `frontend` to mach your backend URL then run:
+
+```bash
+cd frontend
+yarn install
+yarn start
+```
+
